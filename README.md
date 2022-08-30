@@ -8,4 +8,4 @@ Premissa: Jogo RPG rogue-like de ação, onde cada "run" seria diferente, fazend
 
 ### Referências:
 
-Referências: Pokemon e undertale na parte do combate, e Dead Cells na parte do estilo de jogo (rogue-like).
+Referências: Pokemon e undertale na parte do combate, e Dead Cells na parte do estilo de jogo (rogue-like)
