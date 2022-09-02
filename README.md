@@ -43,5 +43,3 @@ Mecânicas:
 -Mana: Utilizada para usar o cajado. (100 de mana base)
 -Vida: Terá seu maximo aumentado através de upgrades no começo de uma nova run. (100 de vida base)
 -Armadura: Está no escudo/armadura e nega uma de dano.
-
-quando morre, sai correndo, mas mantêm a experiencia, fazendo com que sua próxima run começe com ele mais forte
