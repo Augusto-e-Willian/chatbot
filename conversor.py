@@ -56,5 +56,3 @@ if num >= 1:
     num_binario = str(num_binario) + "1"
 
 print(num_binario)
-
-teste
