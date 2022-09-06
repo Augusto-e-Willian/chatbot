@@ -18,30 +18,51 @@ Jogabilidade: O personagem começara com uma arma aleatória que vai dar muito p
 
 Mecânicas:
 -Peso: Cada arma, poção e armadura vai ter seu próprio peso, e o personagem não poderá carregar mais que o máximo estipulado (50 de peso base)
+
 -Taxa de acerto: Servira para balanciar o dano das armas leves e pesadas. Como a arma leve terá um dano menor, terá a taxa de acerto de 90%, e as armas pesadas de 70%. A poção de sorte servirá para aumentar essa porcentagem em 10%, além de aumentar o dinheiro dropado pelos monstros em 20%, esse efeito vai durar até a luta de 3 monstros.
+
 -Upgrades: A cada run, quando o personagem morrer, vai "correr" e ganhar experiência, que vai ter a sua quantidade dependendo do progresso feito pelo jogador, que servirá para fazer upgrades
+
   -Aumento de vida: ganha 10 de vida (Começando com 100)
+  
   -Aumento de ataque em armas leves: ganha 5 de ataque
+ 
   -Aumento de ataque em armas pesadas: ganha 10 de dano
+  
   -Aumento de sorte: ganha 2% de taxa de acerto, e mais 15% de dinheiro
+  
   -Aumento de mana: ganha 5 de mana total
+  
   -Aumento de peso: ganha 5 de peso total
+  
   -Melhores ferreiros e magos: São vendidas melhores armas e poções nas lojas
 
 -Poções e armas:
+ 
  -Poções:
+    
     -Poção de vida: Recupera 50% da vida (+70% se tiver o upgrade "Melhores ferreiros e magos")
+    
     -Poção de mana: Recupera 50% da mana (+70% se tiver o upgrade "Melhores ferreiros e magos")
+    
     -Poção de sorte: Aumenta 10% de taxa de acerto, e os inimigos dropam 20% a mais de dinheiro (15%, 25% se tiver o upgrade "Melhores ferreiros e magos")
+    
     -Poção de fraqueza: Diminui 20% do dano do inimigo (arremessável)
+    
     -Poção de envenenamento: Atribui um dano passivo no inimigo de 5 (arremessável)
 
  -Armas:
+    
     -Espada: "neutro", não tem benefícios, mas tem um dano decente. 90% de chance de acerto
+    
     -Adaga: Dano reduzido, mas tem chance de causar sangramento nos inimigos. 90% de chance de acerto
+    
     -Cajado: Gasta mana para ser utilizado, mas tem 100% de chance de acerto.
+    
     -Machado: Dano aumentado, mas possui 70% de chance de acerto.
 
 -Mana: Utilizada para usar o cajado. (100 de mana base)
+
 -Vida: Terá seu maximo aumentado através de upgrades no começo de uma nova run. (100 de vida base)
+
 -Armadura: Está no escudo/armadura e nega uma de dano.
