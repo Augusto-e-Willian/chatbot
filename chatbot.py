@@ -15,6 +15,7 @@ class MyClient(discord.Client):
 
         if message.content.startswith('#hello'):
             await message.reply('Salve', mention_author=True)
+            
         if message.content.startswith('#atacar'):
             acerto = randint(0, 100)
             if acerto > 75:
@@ -22,7 +23,8 @@ class MyClient(discord.Client):
             else:
                 acerto = "Acertou!"
             await message.reply(acerto, mention_author=True)
-
+        if message.content.startswith("#comandos"):
+            await message.reply("#hello, #atacar", mention_author=True)
 
 intents = discord.Intents.default()
 intents.message_content = True
