@@ -18,7 +18,7 @@ class MyClient(discord.Client):
             
         if message.content.startswith('#atacar'):
             acerto = randint(0, 100)
-            if acerto > 75:
+            if acerto > 85:
                 acerto = "Errou!"
             else:
                 acerto = "Acertou!"
