@@ -2,8 +2,7 @@ from os import getenv
 from dotenv import load_dotenv
 import discord
 load_dotenv()
-
-
+from random import randint
 class MyClient(discord.Client):
     async def on_ready(self):
         print(f'Logged in as {self.user} (ID: {self.user.id})')
@@ -14,8 +13,15 @@ class MyClient(discord.Client):
         if message.author.id == self.user.id:
             return
 
-        if message.content.startswith('!hello'):
+        if message.content.startswith('#hello'):
             await message.reply('Salve', mention_author=True)
+        if message.content.startswith('#atacar'):
+            acerto = randint(0, 100)
+            if acerto > 75:
+                acerto = "Errou!"
+            else:
+                acerto = "Acertou!"
+            await message.reply(acerto, mention_author=True)
 
 
 intents = discord.Intents.default()
