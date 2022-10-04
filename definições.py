@@ -11,27 +11,36 @@ estados = {
         }
     },
     1: {
-        'frases': ['Olá!', 'Tudo bem, como vai?'],
+        'frases': ['Você encontrou um monstro no caminho! Atacar ou fugir?'],
         'proximos_estados': {
-            '[sS](i)+m': 2,
-            '[nN][aã]+o': 3
+            '[aA]taca(r)': 2,
+            '[fF]ugi(r)': 3
         },
-        'inventario': {'chave_prateada'}
+        'inventario': {}
     },
     2: {
-        'frases': ['Era uma vez...', 'E lá de volta outra vez...'],
+        'frases': [''],
         'proximos_estados': {
-            '[nN][aã]+o': 3
+            '[aA]vançar': 4,
+            '[rR]einiciar?': 1
         },
         'inventario': {}
     },
     3: {
-        'frases': ['Fim do jogo!', 'Parabéns!'],
+        'frases': ['Bomba de fumaça usada para tentar escapar!'],
         'proximos_estados': {
             '[rR]einiciar?': 1
         },
-        'inventario': {'chave_dourada'}
+        'inventario': {'bomba_de_fumaça'}
+    },
+    4: {
+        'frases': ['Uma espada apareceu: O=|======> / Pegar?'],
+        'proximos_estados': {
+            '[sS](i)+m': 1
+        },
+        'inventario': {}
     }
 }
+
 
 partidas = {}

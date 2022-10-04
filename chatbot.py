@@ -1,7 +1,7 @@
 from definições import frases, estados, partidas
 import discord
 from discord.ext import commands
-from random import choice
+from random import choice, randint
 from re import fullmatch
 from os import getenv
 from dotenv import load_dotenv
@@ -29,9 +29,10 @@ async def on_message(msg):
         partidas[autor] = {
             'estado': 0,
             'inventario': {
-                'chave_prateada',
-                'chave_dourada'
-            }
+                'bomba_de_fumaça',
+                'espada_quebrada'
+            },
+            'vida': 100
         }
 
     estado_do_jogador = estados[partidas[autor]['estado']]
@@ -42,9 +43,25 @@ async def on_message(msg):
             if inventario_do_jogador.issuperset(estados[value]['inventario']):
                 # Atualiza o estado do jogador
                 partidas[autor]['estado'] = value
+
                 # Remove os itens de inventário requisitados
                 partidas[autor]['inventario'] = inventario_do_jogador.difference(
                     estados[value]['inventario'])
+
+                if partidas[autor]['estado'] == 2:
+                    hit = randint(0,100)
+                    if hit <= 75:
+                        await msg.channel.send('Acertou')
+                    else:
+                        await msg.channel.send('Errou')
+                        await msg.channel.send('Você da uma brexa para o inimigo te atacar e você morre, reiniciar?')
+                if partidas[autor]['estado'] == 3:
+                    escapar = randint(0,100)
+                    if escapar <= 50:
+                        await msg.channel.send('Conseguiu escapar')
+                    else:
+                        await msg.channel.send('Não escapou')
+
                 await msg.channel.send(choice(estados[value]['frases']))
             else:
                 await msg.channel.send(frases['inventario_insuficiente'])
