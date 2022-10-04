@@ -1,34 +1,37 @@
-# Dicionário com as definições da máquina de estados do jogo.
-# As opções dos jogadores são definidas como expressões regulares.
-from random import randint
+frases = {
+    'inventario_insuficiente': 'Sem os recursos necessários para avançar.',
+    'erro': 'I\'m sorry Dave, I\'m afraid I can\'t do that.'
+}
 
 estados = {
     0: {
-        'frases': ['Digite "#começar" para iniciar o jogo.'],
+        'frases': ['Digite "iniciar" para começar o jogo.'],
         'proximos_estados': {
-            '#[Cc]omeça(r)': 1
+            '[iI]niciar?': 1
         }
     },
     1: {
-        'frases': ['Um monstro apareceu!', 'Você deu de cara com um monstro!'],
+        'frases': ['Olá!', 'Tudo bem, como vai?'],
         'proximos_estados': {
-            '#[aA]+tacar': 2,
-            '#[fF]+ugir': 3
-        }
+            '[sS](i)+m': 2,
+            '[nN][aã]+o': 3
+        },
+        'inventario': {'chave_prateada'}
     },
     2: {
-        'frases': [hit],
+        'frases': ['Era uma vez...', 'E lá de volta outra vez...'],
         'proximos_estados': {
-            '#[rR]einicia(r)': 1
-        }
+            '[nN][aã]+o': 3
+        },
+        'inventario': {}
     },
     3: {
-        'frases': [escape],
+        'frases': ['Fim do jogo!', 'Parabéns!'],
         'proximos_estados': {
-            '#[rR]einicia(r)': 1
-        }
+            '[rR]einiciar?': 1
+        },
+        'inventario': {'chave_dourada'}
     }
 }
 
-# Dicionário com os estados correntes de cada jogador.
 partidas = {}

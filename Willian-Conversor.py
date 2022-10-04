@@ -80,5 +80,3 @@ else:
 
 print(numero)
 print(binario)
-
-
