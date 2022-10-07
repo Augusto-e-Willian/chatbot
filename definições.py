@@ -90,7 +90,7 @@ estados = {
         'frases': ['Você realmente acreditou na inocência de uma caveira perambulando por uma floresta densa? Assim que você da as costas para a caveira, ela tira o próprio fêmur, atingindo você na cabeça! Você sai correndo dela. -50 de vida. {continuar}'],
         'vida': -50,
         'proximos_estados': {
-            '[cC]ontinua+r': 11,
+            '[cC]ontinua+r': 10,
             '[rR]einiciar?': 0
         },
         'inventario': {}
@@ -122,15 +122,39 @@ estados = {
         'inventario': {'bomba_de_fumaça'}
     },
     14: {
-        'frases' : ['A luta finalmente termina e você tem a chance de descansar! {continuar/descansar}'],
+        'frases' : ['A luta finalmente termina e você tem a chance de descansar! {continuar}'],
         'vida': 0,
         'proximos_estados': {
             '[cC]ontinua+r': 15,
-            '[dD]escansa+r': 16
         },
         'inventario': {}
     },
-    15: {}
+    15: {
+        'frases': ['Da distância, você consegue ver um vilarejo {ir/ignorar}'],
+        'vida': 0,
+        'proximos_estados': {
+            '[iI]+r': 16,
+            '[iI]gnora+r': 10000
+        },
+        'inventario': {}
+    },
+    16: {
+        'frases': ['Entrando no vilarejo, você consegue ver a ferraria do ferreiro, e a loja de poções do mago, além da taverna que parece um bom lugar para descansar. {ferreiro/mago/taverna}'],
+        'vida': 0,
+        'proximos_estados': {
+            '[fF]erreiro':  17,
+            '[mM]ago': 18,
+            'taverna': 19
+        },
+        'inventario': {}
+    },
+    17: {
+        'frases': [''],
+        'vida': 0,
+        'proximos_estados': {
+            
+        }
+    }
 }
 
 

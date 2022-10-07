@@ -92,7 +92,10 @@ async def on_message(msg):
                         partidas[autor]['estado'] = 15
                     else:
                         await msg.channel.send('Não escapou')
-                        partidas[autor]['estado'] = 1
+                        partidas[autor]['estado'] = 10
+                if partidas[autor]['estado'] == 17:
+                    await msg.channel.send('Chegando na ferraria, o ferreiro anuncia: "Se tocar tem que comprar, estou cansado de forasteiros vindo na minha ferraria e quebrando ou roubando minhas mercadorias!')
+                    await msg.channel.send('Itens: escudo "seminovo" por 20 peças de ouro (5 de negação de dano) e espada enferrujada por 28 peças de ouro(40 de dano). {escudo/espada/voltar}')
 
                 if partidas[autor]['vida'] <= 0:
                     await msg.channel.send('Você infelizmente morreu... Vamos voltar do começo!')
