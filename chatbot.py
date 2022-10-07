@@ -35,6 +35,7 @@ async def on_message(msg):
                 'poção_de_cura'
             },
             'vida': 0,
+            'ouro': 0
         }
 
     estado_do_jogador = estados[partidas[autor]['estado']]
@@ -46,7 +47,7 @@ async def on_message(msg):
                 # Atualiza o estado do jogador
                 partidas[autor]['estado'] = value
                 partidas[autor]['vida'] += estado_do_jogador['vida']
-
+                partidas[autor]['ouro'] += estado_do_jogador['ouro']
                 # Remove os itens de inventário requisitados
                 partidas[autor]['inventario'] = inventario_do_jogador.difference(
                     estados[value]['inventario'])
@@ -55,10 +56,11 @@ async def on_message(msg):
                     partidas[autor]['vida'] = 100           
                 if partidas[autor]['estado'] != 0:
                     await msg.channel.send("vida: "+str(partidas[autor]['vida']))
+                    await msg.channel.send('Ouro: '+str(partidas[autor]['ouro']))
                 hit = randint(0,100)
                 if partidas[autor]['estado'] == 2:
                     if hit <= 85:
-                        await msg.channel.send('Acertou! {avançar}')
+                        await msg.channel.send('Acertou, derrotando o monstro e ganhando 15 peças de ouro {avançar}')
                     else:
                         await msg.channel.send('Errou')
                         await msg.channel.send('Você recebe mais um ataque do inimigo, perdendo 20 de vida! {Atacar/fugir}')
@@ -77,7 +79,7 @@ async def on_message(msg):
                     else:
                         await msg.channel.send('Errou')
                         await msg.channel.send('Você recebe mais um ataque do inimigo, perdendo 30 de vida! {Atacar/fugir}')
-                        partidas[autor]['estado'] = 10
+                        partidas[autor]['estado'] = 12
                 escapar = randint(0,100)
                 if partidas[autor]['estado'] == 3:
                     if escapar <= 75:
