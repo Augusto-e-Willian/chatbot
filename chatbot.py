@@ -5,6 +5,7 @@ from random import choice, randint
 from re import fullmatch
 from os import getenv
 from dotenv import load_dotenv
+
 load_dotenv()
 
 intents = discord.Intents.default()
@@ -31,9 +32,9 @@ async def on_message(msg):
             'inventario': {
                 'bomba_de_fumaça',
                 'espada_quebrada',
-                'poção_de_cira'
+                'poção_de_cura'
             },
-            'vida': 100,
+            'vida': 0,
         }
 
     estado_do_jogador = estados[partidas[autor]['estado']]
@@ -49,33 +50,38 @@ async def on_message(msg):
                 # Remove os itens de inventário requisitados
                 partidas[autor]['inventario'] = inventario_do_jogador.difference(
                     estados[value]['inventario'])
-                if partidas[autor]['estado'] ==1:
-                    await msg.channel.send('Você encontrou um monstro no caminho e foi atacado! Atacar ou fugir?')
-                    await msg.channel.send('Você recebeu dano, ficando com a vida de: ')
-                    await msg.channel.send(estados[value]['vida'])
-
+                # Mostra a vida de forma "automatica" em cada estado diferente de 0
+                if partidas[autor]['vida'] >=100:
+                    partidas[autor]['vida'] = 100                  
+                if partidas[autor]['estado'] != 0:
+                    await msg.channel.send("vida: "+str(partidas[autor]['vida']))
                 if partidas[autor]['estado'] == 2:
                     hit = randint(0,100)
-                    if hit <= 75:
-                        await msg.channel.send('Acertou')
+                    if hit <= 80:
+                        await msg.channel.send('Acertou! {avançar}')
                     else:
                         await msg.channel.send('Errou')
-                        await msg.channel.send('Você da uma brexa para o inimigo te atacar e você morre, reiniciar?')
-                    await msg.channel.send(estados[value]['vida'])
+                        await msg.channel.send('Você recebe mais um ataque do inimigo, perdendo 25 de vida! {Atacar/fugir}')
+                        if partidas[autor]['vida'] <=0:
+                            partidas[autor]['estado'] = 0
+                        partidas[autor]['estado'] = 1
                 if partidas[autor]['estado'] == 3:
                     escapar = randint(0,100)
                     if escapar <= 50:
                         await msg.channel.send('Conseguiu escapar')
                     else:
                         await msg.channel.send('Não escapou')
+
+                if partidas[autor]['vida'] <= 0:
+                    await msg.channel.send('Você infelizmente morreu... Vamos voltar do começo!')
+                    partidas[autor]['estado'] = 0
+
                 await msg.channel.send(choice(estados[value]['frases']))
             else:
                 await msg.channel.send(frases['inventario_insuficiente'])
             return
-
     if partidas[autor]['estado'] == 0:
         await msg.channel.send(choice(estado_do_jogador['frases']))
     else:
         await msg.channel.send(frases['erro'])
-
 bot.run(getenv('DISCORD_TOKEN'))
