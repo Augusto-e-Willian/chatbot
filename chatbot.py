@@ -26,7 +26,7 @@ async def on_message(msg):
 
     autor = msg.author.id
     if autor not in partidas:
-        # Jogador começa no estado 0 com duas chaves
+        # Jogador começa com os itens abaixo
         partidas[autor] = {
             'estado': 0,
             'inventario': {
@@ -52,25 +52,27 @@ async def on_message(msg):
                     estados[value]['inventario'])
                 # Mostra a vida de forma "automatica" em cada estado diferente de 0
                 if partidas[autor]['vida'] >=100:
-                    partidas[autor]['vida'] = 100                  
+                    partidas[autor]['vida'] = 100
+                if partidas[autor]['vida'] <=0:
+                    partidas[autor]['estado'] = 0              
                 if partidas[autor]['estado'] != 0:
                     await msg.channel.send("vida: "+str(partidas[autor]['vida']))
                 if partidas[autor]['estado'] == 2:
                     hit = randint(0,100)
-                    if hit <= 80:
+                    if hit <= 1:
                         await msg.channel.send('Acertou! {avançar}')
                     else:
                         await msg.channel.send('Errou')
                         await msg.channel.send('Você recebe mais um ataque do inimigo, perdendo 25 de vida! {Atacar/fugir}')
-                        if partidas[autor]['vida'] <=0:
-                            partidas[autor]['estado'] = 0
                         partidas[autor]['estado'] = 1
                 if partidas[autor]['estado'] == 3:
                     escapar = randint(0,100)
                     if escapar <= 50:
                         await msg.channel.send('Conseguiu escapar')
+                        partidas[autor]['estado'] = 4
                     else:
                         await msg.channel.send('Não escapou')
+                        partidas[autor]['estado'] = 1
 
                 if partidas[autor]['vida'] <= 0:
                     await msg.channel.send('Você infelizmente morreu... Vamos voltar do começo!')
