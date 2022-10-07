@@ -52,24 +52,44 @@ async def on_message(msg):
                     estados[value]['inventario'])
                 # Mostra a vida de forma "automatica" em cada estado diferente de 0
                 if partidas[autor]['vida'] >=100:
-                    partidas[autor]['vida'] = 100
-                if partidas[autor]['vida'] <=0:
-                    partidas[autor]['estado'] = 0              
+                    partidas[autor]['vida'] = 100           
                 if partidas[autor]['estado'] != 0:
                     await msg.channel.send("vida: "+str(partidas[autor]['vida']))
+                hit = randint(0,100)
                 if partidas[autor]['estado'] == 2:
-                    hit = randint(0,100)
-                    if hit <= 1:
+                    if hit <= 85:
                         await msg.channel.send('Acertou! {avançar}')
                     else:
                         await msg.channel.send('Errou')
-                        await msg.channel.send('Você recebe mais um ataque do inimigo, perdendo 25 de vida! {Atacar/fugir}')
+                        await msg.channel.send('Você recebe mais um ataque do inimigo, perdendo 20 de vida! {Atacar/fugir}')
                         partidas[autor]['estado'] = 1
+                if partidas[autor]['estado'] == 14:
+                    if hit <= 85:
+                        await msg.channel.send('Acertou!')
+                    else:
+                        await msg.channel.send('Errou')
+                        await msg.channel.send('Você recebe mais um ataque do inimigo, perdendo 10 de vida! {Atacar/fugir}')
+                        partidas[autor]['estado'] = 12
+                        # NAO ESTA FUNCIONANDO, FAZER UM INTERMEDIÁRIO ENTRE O ESTADO 12 E 14!!!
+                if partidas[autor]['estado'] == 12:
+                    if hit <= 85:
+                        await msg.channel.send('Acertou!')
+                    else:
+                        await msg.channel.send('Errou')
+                        await msg.channel.send('Você recebe mais um ataque do inimigo, perdendo 30 de vida! {Atacar/fugir}')
+                        partidas[autor]['estado'] = 10
+                escapar = randint(0,100)
                 if partidas[autor]['estado'] == 3:
-                    escapar = randint(0,100)
-                    if escapar <= 50:
-                        await msg.channel.send('Conseguiu escapar')
-                        partidas[autor]['estado'] = 4
+                    if escapar <= 75:
+                        await msg.channel.send('Conseguiu escapar! {avançar}')
+                        partidas[autor]['estado'] = 2
+                    else:
+                        await msg.channel.send('Não escapou')
+                        partidas[autor]['estado'] = 1
+                if partidas[autor]['estado'] == 13:
+                    if escapar <= 75:
+                        await msg.channel.send('Conseguiu escapar! {avançar}')
+                        partidas[autor]['estado'] = 15
                     else:
                         await msg.channel.send('Não escapou')
                         partidas[autor]['estado'] = 1

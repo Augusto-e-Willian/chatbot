@@ -13,8 +13,8 @@ estados = {
         'inventario': {}
     },
     1: {
-        'frases': ['Você encontrou um monstro no caminho e foi atacado, perdendo 25 pontos de vida! {Atacar/fugir}'],
-        'vida': -25,
+        'frases': ['Você encontrou um monstro no caminho e foi atacado, perdendo 20 pontos de vida! {Atacar/fugir}'],
+        'vida': -20,
         'proximos_estados': {
             '[aA]taca(r)': 2,
             '[fF]ugi(r)': 3
@@ -94,7 +94,43 @@ estados = {
             '[rR]einiciar?': 0
         },
         'inventario': {}
-    }
+    },
+    10: {
+        'frases': ['Passando por um pântano, da lama algo te puxa, um ser que parece vir de outro mundo, com um corpo lamacento e humanoide, esse não parece um inimigo que vai ser facilmente derrotado. - 30 de vida / {atacar/fugir}'],
+        'vida': -30,
+        'proximos_estados': {
+            'atacar': 12,
+            'fugir': 13
+        },
+        'inventario': {}
+    },
+    12: {
+        'frases': ['Mesmo cortando o inimigo de ponta a ponta, ele não morre, porém é visível que está mais fraco que antes. {atacar/fugir}'],
+        'vida': -10,
+        'proximos_estados': {
+            '[aA]taca+r': 14,
+            '[fF]ugi+r': 13
+        },
+        'inventario': {}
+    },
+    13: {
+        'frases': ['Bomba de fumaça usada para tentar escapar!'],
+        'vida': 0,
+        'proximos_estados': {
+            '[rR]einiciar?': 0
+        },
+        'inventario': {'bomba_de_fumaça'}
+    },
+    14: {
+        'frases' : ['A luta finalmente termina e você tem a chance de descansar! {continuar/descansar}'],
+        'vida': 0,
+        'proximos_estados': {
+            '[cC]ontinua+r': 15,
+            '[dD]escansa+r': 16
+        },
+        'inventario': {}
+    },
+    15: {}
 }
 
 
