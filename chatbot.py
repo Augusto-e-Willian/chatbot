@@ -109,7 +109,7 @@ async def on_message(msg):
                         await msg.channel.send('Você não tem peças de ouro suficientes para comprar esse escudo!')
                         partidas[autor]['estado'] = 17
                     else:
-                        await msg.channel.send('Com a quantidade de dinheiro em mãos, você paga o ferreiro! {voltar}')
+                        await msg.channel.send('Você pega o escudo e vai até o ferreiro para pagar.')
                         partidas[autor]['inventario'].add('escudo_seminovo')
                 if partidas[autor]['estado']==21:
                     await msg.channel.send(inventario_do_jogador)

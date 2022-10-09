@@ -206,7 +206,7 @@ estados = {
         'inventario': {}
     },
     20: {
-        'frases': ['Você pega o escudo e vai até o ferreiro para pagar. {voltar}'],
+        'frases': ['Com a quantidade de dinheiro em mãos, você paga o ferreiro! {voltar}'],
         'vida': 0,
         'ouro': -45,
         'proximos_estados': {
