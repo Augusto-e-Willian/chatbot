@@ -28,14 +28,14 @@ async def on_message(msg):
     if autor not in partidas:
         # Jogador começa com os itens abaixo
         partidas[autor] = {
-            'estado': 16,
+            'estado': 0,
             'inventario': {
                 'bomba_de_fumaça',
                 'espada_quebrada',
                 'poção_de_cura'
             },
-            'vida': 10,
-            'ouro': 45
+            'vida': 0,
+            'ouro': 0
         }
 
     estado_do_jogador = estados[partidas[autor]['estado']]
