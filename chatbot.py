@@ -65,6 +65,8 @@ async def on_message(msg):
                         await msg.channel.send('Errou')
                         await msg.channel.send('Você recebe mais um ataque do inimigo, perdendo 20 de vida! {Atacar/fugir}')
                         partidas[autor]['estado'] = 1
+                if partidas[autor]['estado'] == 5:
+                    partidas[autor]['inventario'].add('espada_enferrujada')
                 if partidas[autor]['estado'] == 14:
                     if hit <= 85:
                         await msg.channel.send('Acertou!')
@@ -97,7 +99,7 @@ async def on_message(msg):
                         partidas[autor]['estado'] = 10
                 if partidas[autor]['estado'] == 17:
                     await msg.channel.send('Chegando na ferraria, o ferreiro anuncia: "Se tocar tem que comprar, estou cansado de forasteiros vindo na minha ferraria e quebrando ou roubando minhas mercadorias!')
-                    await msg.channel.send('Itens: escudo "seminovo" por 20 peças de ouro (10 de negação de dano). {comprar/voltar}')
+                    await msg.channel.send('Itens: escudo "seminovo" por 45 peças de ouro (10 de negação de dano). {comprar/voltar}')
                     #FAZER UM SISTEMA PARA A VENDA DE ITENS, COMO A ESPADA NO COMEÇO DO JOGO
                     #FAZER UM SISTEMA PARA A VENDA DE ITENS, COMO A ESPADA NO COMEÇO DO JOGO
                     #FAZER UM SISTEMA PARA A VENDA DE ITENS, COMO A ESPADA NO COMEÇO DO JOGO
