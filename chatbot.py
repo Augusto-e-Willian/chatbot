@@ -28,13 +28,13 @@ async def on_message(msg):
     if autor not in partidas:
         # Jogador começa com os itens abaixo
         partidas[autor] = {
-            'estado': 16,
+            'estado': 0,
             'inventario': {
                 'bomba_de_fumaça',
                 'espada_quebrada',
                 'poção_de_cura'
             },
-            'vida': 10,
+            'vida': 0,
             'ouro': 0
         }
 
@@ -98,6 +98,12 @@ async def on_message(msg):
                 if partidas[autor]['estado'] == 17:
                     await msg.channel.send('Chegando na ferraria, o ferreiro anuncia: "Se tocar tem que comprar, estou cansado de forasteiros vindo na minha ferraria e quebrando ou roubando minhas mercadorias!')
                     await msg.channel.send('Itens: escudo "seminovo" por 20 peças de ouro (10 de negação de dano). {comprar/voltar}')
+                    #FAZER UM SISTEMA PARA A VENDA DE ITENS, COMO A ESPADA NO COMEÇO DO JOGO
+                    #FAZER UM SISTEMA PARA A VENDA DE ITENS, COMO A ESPADA NO COMEÇO DO JOGO
+                    #FAZER UM SISTEMA PARA A VENDA DE ITENS, COMO A ESPADA NO COMEÇO DO JOGO
+                    #FAZER UM SISTEMA PARA A VENDA DE ITENS, COMO A ESPADA NO COMEÇO DO JOGO
+                    #FAZER UM SISTEMA PARA A VENDA DE ITENS, COMO A ESPADA NO COMEÇO DO JOGO
+                    #FAZER UM SISTEMA PARA A VENDA DE ITENS, COMO A ESPADA NO COMEÇO DO JOGO
                 if partidas[autor]['estado'] ==20:
                     if partidas[autor]['ouro'] <= 44:
                         await msg.channel.send('Você não tem peças de ouro suficientes para comprar esse escudo!')
@@ -107,7 +113,6 @@ async def on_message(msg):
                         partidas[autor]['inventario'].add('escudo_seminovo')
                 if partidas[autor]['estado']==21:
                     await msg.channel.send(inventario_do_jogador)
-                    #talvez criar uma variavel "escudo" e se o jogador passar pelo estado 21 ele pega essa variavel e se "escudo" = True, partidas[autor][vida]+=10
                     partidas[autor]['estado']=16
 
                 if partidas[autor]['vida'] <= 0:
