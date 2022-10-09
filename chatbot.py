@@ -28,14 +28,14 @@ async def on_message(msg):
     if autor not in partidas:
         # Jogador começa com os itens abaixo
         partidas[autor] = {
-            'estado': 0,
+            'estado': 16,
             'inventario': {
                 'bomba_de_fumaça',
                 'espada_quebrada',
                 'poção_de_cura'
             },
-            'vida': 0,
-            'ouro': 0
+            'vida': 10,
+            'ouro': 45
         }
 
     estado_do_jogador = estados[partidas[autor]['estado']]
@@ -109,11 +109,12 @@ async def on_message(msg):
                     #FAZER UM SISTEMA PARA A VENDA DE ITENS, COMO A ESPADA NO COMEÇO DO JOGO
                     #FAZER UM SISTEMA PARA A VENDA DE ITENS, COMO A ESPADA NO COMEÇO DO JOGO
                 if partidas[autor]['estado'] ==20:
+                    await msg.channel.send('Você pega o escudo e vai até o ferreiro para pagar.')
                     if partidas[autor]['ouro'] <= 44:
                         await msg.channel.send('Você não tem peças de ouro suficientes para comprar esse escudo!')
                         partidas[autor]['estado'] = 17
                     else:
-                        await msg.channel.send('Você pega o escudo e vai até o ferreiro para pagar.')
+                        await msg.channel.send('Com a quantidade de dinheiro em mãos, você paga o ferreiro! {voltar}')
                         partidas[autor]['inventario'].add('escudo_seminovo')
                 if partidas[autor]['estado']==21:
                     await msg.channel.send(inventario_do_jogador)
