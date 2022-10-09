@@ -53,10 +53,11 @@ async def on_message(msg):
                     estados[value]['inventario'])
                 # Mostra a vida de forma "automatica" em cada estado diferente de 0
                 if partidas[autor]['vida'] >=100:
-                    partidas[autor]['vida'] = 100           
+                    partidas[autor]['vida'] = 100
+                vida_stats = 'Vida: '+ str(partidas[autor]['vida'])+ ' / '
+                ouro_stats = 'Ouro: '+str(partidas[autor]['ouro'])
                 if partidas[autor]['estado'] != 0:
-                    await msg.channel.send("vida: "+str(partidas[autor]['vida']))
-                    await msg.channel.send('Ouro: '+str(partidas[autor]['ouro']))
+                    await msg.channel.send(str(vida_stats+ouro_stats))
                 hit = randint(0,100)
                 if partidas[autor]['estado'] == 2:
                     if hit <= 85:
