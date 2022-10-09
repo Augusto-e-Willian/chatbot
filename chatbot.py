@@ -54,6 +54,7 @@ async def on_message(msg):
                 # Mostra a vida de forma "automatica" em cada estado diferente de 0
                 if partidas[autor]['vida'] >=100:
                     partidas[autor]['vida'] = 100
+                # Junta 5 variáveis e transforma em duas, pois o comando .send só aceita até duas variaveis diferentes
                 vida_stats = 'Vida: '+ str(partidas[autor]['vida'])+ ' / '
                 ouro_stats = 'Ouro: '+str(partidas[autor]['ouro'])
                 if partidas[autor]['estado'] != 0:
