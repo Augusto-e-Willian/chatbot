@@ -28,13 +28,13 @@ async def on_message(msg):
     if autor not in partidas:
         # Jogador começa com os itens abaixo
         partidas[autor] = {
-            'estado': 0,
+            'estado': 16,
             'inventario': {
                 'bomba_de_fumaça',
                 'espada_quebrada',
                 'poção_de_cura'
             },
-            'vida': 0,
+            'vida': 10,
             'ouro': 0
         }
 
@@ -79,25 +79,36 @@ async def on_message(msg):
                     else:
                         await msg.channel.send('Errou')
                         await msg.channel.send('Você recebe mais um ataque do inimigo, perdendo 30 de vida! {Atacar/fugir}')
-                        partidas[autor]['estado'] = 12
+                        partidas[autor]['estado'] = 10
                 escapar = randint(0,100)
                 if partidas[autor]['estado'] == 3:
-                    if escapar <= 75:
+                    if escapar <= 95:
                         await msg.channel.send('Conseguiu escapar! {avançar}')
                         partidas[autor]['estado'] = 2
                     else:
                         await msg.channel.send('Não escapou')
                         partidas[autor]['estado'] = 1
                 if partidas[autor]['estado'] == 13:
-                    if escapar <= 75:
-                        await msg.channel.send('Conseguiu escapar! {avançar}')
+                    if escapar <= 95:
+                        await msg.channel.send('Conseguiu escapar! Da distância, você consegue ver um vilarejo {ir/ignorar}')
                         partidas[autor]['estado'] = 15
                     else:
                         await msg.channel.send('Não escapou')
                         partidas[autor]['estado'] = 10
                 if partidas[autor]['estado'] == 17:
                     await msg.channel.send('Chegando na ferraria, o ferreiro anuncia: "Se tocar tem que comprar, estou cansado de forasteiros vindo na minha ferraria e quebrando ou roubando minhas mercadorias!')
-                    await msg.channel.send('Itens: escudo "seminovo" por 20 peças de ouro (5 de negação de dano) e espada enferrujada por 28 peças de ouro(40 de dano). {escudo/espada/voltar}')
+                    await msg.channel.send('Itens: escudo "seminovo" por 20 peças de ouro (10 de negação de dano). {comprar/voltar}')
+                if partidas[autor]['estado'] ==20:
+                    if partidas[autor]['ouro'] <= 44:
+                        await msg.channel.send('Você não tem peças de ouro suficientes para comprar esse escudo!')
+                        partidas[autor]['estado'] = 17
+                    else:
+                        await msg.channel.send('Com a quantidade de dinheiro em mãos, você paga o ferreiro! {voltar}')
+                        partidas[autor]['inventario'].add('escudo_seminovo')
+                if partidas[autor]['estado']==21:
+                    await msg.channel.send(inventario_do_jogador)
+                    #talvez criar uma variavel "escudo" e se o jogador passar pelo estado 21 ele pega essa variavel e se "escudo" = True, partidas[autor][vida]+=10
+                    partidas[autor]['estado']=16
 
                 if partidas[autor]['vida'] <= 0:
                     await msg.channel.send('Você infelizmente morreu... Vamos voltar do começo!')
