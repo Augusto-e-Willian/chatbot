@@ -282,6 +282,15 @@ estados = {
         },
         'inventario': {}
     },
+    23.2: {
+        'frases': ['Bomba de fumaça usada para tentar escapar!'],
+        'vida': 0,
+        'ouro': 0,
+        'proximos_estados': {
+            '[rR]einiciar?': 0
+        },
+        'inventario': {'bomba_de_fumaça'}
+    },
     23.3: {
         'frases': ['Com os dois jacarés derrotados, agora só falta mais um! {atacar/fugir}'],
         'vida': -10,
