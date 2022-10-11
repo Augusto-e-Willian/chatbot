@@ -108,10 +108,29 @@ async def on_message(msg):
                     #FAZER UM SISTEMA PARA A VENDA DE ITENS, COMO A ESPADA NO COMEÇO DO JOGO
                     #FAZER UM SISTEMA PARA A VENDA DE ITENS, COMO A ESPADA NO COMEÇO DO JOGO
                     #FAZER UM SISTEMA PARA A VENDA DE ITENS, COMO A ESPADA NO COMEÇO DO JOGO
+                if partidas[autor]['estado'] ==18:
+                    await msg.channel.send('Entrando na tenda do mago, ele diz que trabalha com alquimia e te mostra os itens disponíveis na sua loja!')
+                    await msg.channel.send('Itens: Poção de cura (20 peças de ouro) // bomba de fumaça (40 peças de ouro) {vida/fumaça/voltar}')
+                if partidas[autor]['estado'] ==18.1:
+                    await msg.channel.send('Você pega a poção de cura e vai até o mago para pagar')
+                    if partidas[autor]['ouro'] <= 19:
+                        await msg.channel.send('Você não tem peças de ouro suficientes para comprar esse item!')
+                        partidas[autor]['estado'] = 18
+                    else:
+                        await msg.channel.send('Com a quantidade de dinheiro em mãos, você paga o mago! {voltar}')
+                        partidas[autor]['inventario'].add('poção_de_cura')
+                if partidas[autor]['estado'] ==18.2:
+                    await msg.channel.send('Você pega a bomba de fumaça e vai até o mago para pagar')
+                    if partidas[autor]['ouro'] <= 39:
+                        await msg.channel.send('Você não tem peças de ouro suficientes para comprar esse item!')
+                        partidas[autor]['estado'] = 18
+                    else:
+                        await msg.channel.send('Com a quantidade de dinheiro em mãos, você paga o mago! {voltar}')
+                        partidas[autor]['inventario'].add('bomba_de_fumaça')
                 if partidas[autor]['estado'] ==20:
                     await msg.channel.send('Você pega o escudo e vai até o ferreiro para pagar.')
                     if partidas[autor]['ouro'] <= 44:
-                        await msg.channel.send('Você não tem peças de ouro suficientes para comprar esse escudo!')
+                        await msg.channel.send('Você não tem peças de ouro suficientes para comprar esse item!')
                         partidas[autor]['estado'] = 17
                     else:
                         await msg.channel.send('Com a quantidade de dinheiro em mãos, você paga o ferreiro! {voltar}')
@@ -119,7 +138,8 @@ async def on_message(msg):
                 if partidas[autor]['estado']==21:
                     await msg.channel.send(inventario_do_jogador)
                     partidas[autor]['estado']=16
-
+                if partidas[autor]['estado'] ==23:
+                    await msg.channel.send('Depois de uma grande caminhada por essa floresta, você começa a escutar vozes e é parado por três jacares que saíram em um rio próximo e estão estranhamente coordenados. De longe, você vê uma bruxa que parece estar controlando esses animais!')
                 if partidas[autor]['vida'] <= 0:
                     await msg.channel.send('Você infelizmente morreu... Vamos voltar do começo!')
                     partidas[autor]['estado'] = 0

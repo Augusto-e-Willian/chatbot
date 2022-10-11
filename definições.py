@@ -169,10 +169,11 @@ estados = {
         'inventario': {}
     },
     16: {
-        'frases': ['Entrando no vilarejo, você consegue ver a ferraria do ferreiro, e a loja de poções do mago, além da taverna que parece um bom lugar para descansar. {ferreiro/mago/taverna/inventario}'],
+        'frases': ['Entrando no vilarejo, você consegue ver a ferraria do ferreiro, e a loja de poções do mago, além da taverna que parece um bom lugar para descansar. Quando achar que está pronto, pode continuar sua aventura! {ferreiro/mago/taverna/inventario/continuar}'],
         'vida': 0,
         'ouro': 0,
         'proximos_estados': {
+            '[cC]ontinua+r': 22,
             '[iI]nvent[aá]ri+o': 21,
             '[fF]erreiro':  17,
             '[mM]ago': 18,
@@ -193,7 +194,35 @@ estados = {
         'inventario': {}
     },
     18: {
-
+        'frases': [''],
+        'vida': 0,
+        'ouro': 0,
+        'proximos_estados': {
+            '[vV]id+a': 18.1,
+            '[fF]uma[cç]+a': 18.2,
+            '[vV]olta+r': 16
+        },
+        'inventario': {}
+    },
+    18.1: {
+        'frases': [''],
+        'vida': 0,
+        'ouro': -20,
+        'proximos_estados': {
+            '[vV]olta+r': 16,
+            '[rR]einiciar?': 0
+        },
+        'inventario': {}
+    },
+    18.2: {
+        'frases': [''],
+        'vida': 0,
+        'ouro': -40,
+        'proximos_estados': {
+            '[vV]olta+r': 16,
+            '[rR]einicia+r': 0
+        },
+        'inventario': {}
     },
     19: {
         'frases': ['Você passa um tempo na taverna bebendo e descansando, e se sente totalmente recuperado! {voltar}'],
@@ -221,6 +250,35 @@ estados = {
         'ouro': 0,
         'proximos_estados': {
             'skfsdkfopskpfo': 11011101010
+        },
+        'inventario': {}
+    },
+    22: {
+        'frases': ['Saindo do vilarejo, você anda por um longo caminho até chegar em uma floresta completamente fechada, onde a luz mal consegue entrar.'],
+        'vida': 0,
+        'ouro': 0,
+        'proximos_estados':{
+            '[cC]ontinua+r': 23
+        },
+        'inventario': {}
+    },
+    23: {
+        'frases': ['Os jacarés te atacam, causando 20 de dano! {atacar/fugir}'],
+        'vida': -20,
+        'ouro': 0,
+        'proximos_estados': {
+            '[aA]taca+r': 23.1,
+            '[fF]ugi+r': 23.2
+        },
+        'inventario': {}
+    },
+    23.1: {
+        'frases': ['Você consegue matar um dos jacarés, mas ainda faltam mais 2, que te causam 15 de dano! {atacar/fugir}'],
+        'vida': -15,
+        'ouro': 0,
+        'proximos_estados': {
+            '[aA]taca+r': 23.3,
+            '[fF]ugi+r': 23.4
         },
         'inventario': {}
     }
