@@ -301,6 +301,24 @@ estados = {
         },
         'inventario': {}
     },
+    23.4: {
+        'frases': ['Bomba de fumaça usada para tentar escapar!'],
+        'vida': 0,
+        'ouro': 0,
+        'proximos_estados': {
+            '[rR]einiciar?': 0
+        },
+        'inventario': {'bomba_de_fumaça'}
+    },
+    23.6: {
+        'frases': ['Bomba de fumaça usada para tentar escapar!'],
+        'vida': 0,
+        'ouro': 0,
+        'proximos_estados': {
+            '[rR]einiciar?': 0
+        },
+        'inventario': {'bomba_de_fumaça'}
+    },
     23.5: {
         'frases': ['Você finalmente consegue derrotar os animais e vai em direção a bruxa, que parece estar muito assustada. Chegando nela, a bruxa te pede piedade e te promete dar um saco com peças de ouro além de te ajudar com suas feridas. {atacar/desculpar'],
         'vida': 0,
@@ -308,7 +326,40 @@ estados = {
         'proximos_estados': {
             '[aA]taca+r': 23.7,
             '[dD]esculpa+r': 23.8
-        }
+        },
+        'inventario': {}
+    },
+    23.7: {
+        'frases': ['Você não acredita na bruxa e ataca ela, pegando então 40 peças de ouro do seu corpo, além do couro dos jacarés. {continuar}'],
+        'vida': 0,
+        'ouro': 40,
+        'proximos_estados': {
+            '[cC]ontinua+r': 24
+        },
+        'inventario': {}
+    },
+    23.8: {
+        'frases': ['Você desculpa a bruxa, e ela então recupera 15 dos seus pontos de vida, além de te dar 45 peças de ouro e o couro dos jacarés! {continuar/descansar}'],
+        'vida': 15,
+        'ouro': 45,
+        'proximos_estados': {
+            '[cC]ontinua+r': 24,
+            '[dD]escansa+r': 25
+        },
+        'inventario': {}
+    },
+    24: {
+        'frases': ['Deixando toda essa situação de lado, você ']
+    },
+    25: {
+        'frases': ['Você usou uma poção de cura, recuperando 50 pontos de vida! {continuar}'],
+        'vida': 50,
+        'ouro': 0,
+        'proximos_estados': {
+            '[cC]ontinua+r': 24,
+            '[rR]einiciar?': 0
+        },
+        'inventario': {'poção_de_cura'}
     }
 }
 
