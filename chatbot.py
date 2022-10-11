@@ -28,13 +28,13 @@ async def on_message(msg):
     if autor not in partidas:
         # Jogador começa com os itens abaixo
         partidas[autor] = {
-            'estado': 0,
+            'estado': 16,
             'inventario': {
                 'bomba_de_fumaça',
                 'espada_quebrada',
                 'poção_de_cura'
             },
-            'vida': 0,
+            'vida': 100,
             'ouro': 0
         }
 
@@ -140,10 +140,31 @@ async def on_message(msg):
                     partidas[autor]['estado']=16
                 if partidas[autor]['estado'] ==23:
                     await msg.channel.send('Depois de uma grande caminhada por essa floresta, você começa a escutar vozes e é parado por três jacares que saíram em um rio próximo e estão estranhamente coordenados. De longe, você vê uma bruxa que parece estar controlando esses animais!')
+                
                 if partidas[autor]['vida'] <= 0:
                     await msg.channel.send('Você infelizmente morreu... Vamos voltar do começo!')
                     partidas[autor]['estado'] = 0
-
+                if partidas[autor]['estado'] == 23.1:
+                    if hit <= 90:
+                        await msg.channel.send('Acertou!')
+                    else:
+                        await msg.channel.send('Errou')
+                        await msg.channel.send('Você recebe mais um ataque do inimigo, perdendo 20 de vida! {Atacar/fugir}')
+                        partidas[autor]['estado'] = 23
+                if partidas[autor]['estado'] == 23.3:
+                    if hit <= 85:
+                        await msg.channel.send('Acertou!')
+                    else:
+                        await msg.channel.send('Errou')
+                        await msg.channel.send('Você recebe mais um ataque do inimigo, perdendo 30 de vida! {Atacar/fugir}')
+                        partidas[autor]['estado'] = 23.1
+                if partidas[autor]['estado'] == 23.5:
+                    if hit <= 85:
+                        await msg.channel.send('Acertou!')
+                    else:
+                        await msg.channel.send('Errou')
+                        await msg.channel.send('Você recebe mais um ataque do inimigo, perdendo 30 de vida! {Atacar/fugir}')
+                        partidas[autor]['estado'] = 23.3
                 await msg.channel.send(choice(estados[value]['frases']))
             else:
                 await msg.channel.send(frases['inventario_insuficiente'])

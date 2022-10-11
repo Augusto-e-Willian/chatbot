@@ -281,6 +281,25 @@ estados = {
             '[fF]ugi+r': 23.4
         },
         'inventario': {}
+    },
+    23.3: {
+        'frases': ['Com os dois jacarés derrotados, agora só falta mais um! {atacar/fugir}'],
+        'vida': -10,
+        'ouro': 0,
+        'proximos_estados': {
+            '[aA]taca+r': 23.5,
+            '[fF]ugi+r': 23.6
+        },
+        'inventario': {}
+    },
+    23.5: {
+        'frases': ['Você finalmente consegue derrotar os animais e vai em direção a bruxa, que parece estar muito assustada. Chegando nela, a bruxa te pede piedade e te promete dar um saco com peças de ouro além de te ajudar com suas feridas. {atacar/desculpar'],
+        'vida': 0,
+        'ouro': 0,
+        'proximos_estados': {
+            '[aA]taca+r': 23.7,
+            '[dD]esculpa+r': 23.8
+        }
     }
 }
 
