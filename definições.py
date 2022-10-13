@@ -254,7 +254,7 @@ estados = {
         'inventario': {}
     },
     22: {
-        'frases': ['Saindo do vilarejo, você anda por um longo caminho até chegar em uma floresta completamente fechada, onde a luz mal consegue entrar.'],
+        'frases': ['Saindo do vilarejo, você anda por um longo caminho até chegar em uma floresta completamente fechada, onde a luz mal consegue entrar. {continuar}'],
         'vida': 0,
         'ouro': 0,
         'proximos_estados':{
@@ -349,7 +349,51 @@ estados = {
         'inventario': {}
     },
     24: {
-        'frases': ['Deixando toda essa situação de lado, você ']
+        'frases': ['Deixando toda essa situação de lado, você continua sua jornada pela floresta densa procurando uma saída, até que ?'],
+        'vida': -25,
+        'ouro': 0,
+        'proximos_estados': {
+            '[aA]taca+r': 24.1,
+            '[fF]ugi+r': 24.2
+        },
+        'inventario': {}
+    },
+    24.1: {
+        'frases': ['???'],
+        'vida': -20,
+        'ouro': 0,
+        'proximos_estados': {
+            '[aA]taca+r': 24.3,
+            '[fF]ugi+r': 24.4
+        },
+        'inventario': {}
+    },
+    24.2: {
+        'frases': ['Bomba de fumaça usada para tentar escapar!'],
+        'vida': 0,
+        'ouro': 0,
+        'proximos_estados': {
+            '[rR]einiciar?': 0
+        },
+        'inventario': {'bomba_de_fumaça'}
+    },
+    24.3: {
+        'frases': ['Você finalmente consegue derrotar essa arvore monstuosa, arrancando de seus galhos uma semente dourada que parece valer alguma coisa se vendida no vilarejo. {continuar}'],
+        'vida': 0,
+        'ouro': 0,
+        'proximos_estados': {
+            '[cC]ontinua+r': 26
+        },
+        'inventario': {}
+    },
+    24.4: {
+        'frases': ['Bomba de fumaça usada para tentar escapar!'],
+        'vida': 0,
+        'ouro': 0,
+        'proximos_estados': {
+            '[rR]einiciar?': 0
+        },
+        'inventario': {'bomba_de_fumaça'}
     },
     25: {
         'frases': ['Você usou uma poção de cura, recuperando 50 pontos de vida! {continuar}'],

@@ -191,6 +191,34 @@ async def on_message(msg):
                     partidas[autor]['inventario'].add('couro_de_jacaré')
                     partidas[autor]['inventario'].add('couro_de_jacaré')
                     partidas[autor]['inventario'].add('couro_de_jacaré')
+                if partidas[autor]['estado'] == 24.1:
+                    if hit <= 85:
+                        await msg.channel.send('Acertou!')
+                    else:
+                        await msg.channel.send('Errou')
+                        await msg.channel.send('Você recebe mais um ataque do inimigo, perdendo 30 de vida! {Atacar/fugir}')
+                        partidas[autor]['estado'] = 24
+                if partidas[autor]['estado'] ==24.2:
+                    if escapar <= 95:
+                        await msg.channel.send('Conseguiu escapar! {avançar}')
+                        partidas[autor]['estado'] = 26
+                    else:
+                        await msg.channel.send('Não escapou')
+                        partidas[autor]['estado'] = 24
+                if partidas[autor]['estado'] == 24.3:
+                    if hit <= 85:
+                        await msg.channel.send('Acertou!')
+                    else:
+                        await msg.channel.send('Errou')
+                        await msg.channel.send('Você recebe mais um ataque do inimigo, perdendo 30 de vida! {Atacar/fugir}')
+                        partidas[autor]['estado'] = 24.1
+                if partidas[autor]['estado'] ==24.4:
+                    if escapar <= 95:
+                        await msg.channel.send('Conseguiu escapar! {avançar}')
+                        partidas[autor]['estado'] = 24.1
+                    else:
+                        await msg.channel.send('Não escapou')
+                        partidas[autor]['estado'] = 26
                 await msg.channel.send(choice(estados[value]['frases']))
             else:
                 await msg.channel.send(frases['inventario_insuficiente'])
