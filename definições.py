@@ -404,6 +404,16 @@ estados = {
             '[rR]einiciar?': 0
         },
         'inventario': {'poção_de_cura'}
+    },
+    26: {
+        'frases': ['Saindo da parte menos densa da floresta, você avista fumaça de longe, e chegando mais perto é visível que está saindo de um vilarejo. {ir/ignorar}'],
+        'vida': 0,
+        'ouro': 0,
+        'proximos_estados': {
+            '[iI]+r': 27,
+            '[iI]gnora+r': 28
+        },
+        'inventario': {}
     }
 }
 
