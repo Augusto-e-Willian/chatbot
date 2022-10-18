@@ -28,7 +28,7 @@ async def on_message(msg):
     if autor not in partidas:
         # Jogador começa com os itens abaixo
         partidas[autor] = {
-            'estado': 16,
+            'estado': 0,
             'inventario': {
                 'bomba_de_fumaça',
                 'espada_quebrada',
