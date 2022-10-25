@@ -86,7 +86,7 @@ estados = {
         'inventario': {'poção_de_cura'}
     }, 
     6: {
-        'frases': ['Uma caveira de carater duvidoso aparece, não parecendo causar ameaça e liberando o caminho para sua passagem. Você escolhe matar a caveira a sangue frio ou passar de forma pacifica? {passar/atacar}'],
+        'frases': ['Uma caveira de caráter duvidoso aparece, não parecendo causar ameaça e liberando o caminho para sua passagem. Você escolhe matar a caveira a sangue frio ou passar de forma pacifica? {passar/atacar}'],
         'vida': 0,
         'ouro': 0,
         'proximos_estados': {
@@ -117,7 +117,7 @@ estados = {
         'inventario': {}
     },
     10: {
-        'frases': ['Passando por um pântano, da lama algo te puxa, um ser que parece vir de outro mundo, com um corpo lamacento e humanoide, esse não parece um inimigo que vai ser facilmente derrotado. - 30 de vida / {atacar/fugir}'],
+        'frases': ['Passando por um pântano, da lama algo te puxa, um ser que parece vir de outro mundo, com um corpo lamacento e humanoide. Esse não parece um inimigo que vai ser facilmente derrotado. - 30 de vida / {atacar/fugir}'],
         'vida': -30,
         'ouro': 0,
         'proximos_estados': {
@@ -320,7 +320,7 @@ estados = {
         'inventario': {'bomba_de_fumaça'}
     },
     23.5: {
-        'frases': ['Você finalmente consegue derrotar os animais e vai em direção a bruxa, que parece estar muito assustada. Chegando nela, a bruxa te pede piedade e te promete dar um saco com peças de ouro além de te ajudar com suas feridas. {atacar/desculpar'],
+        'frases': ['Você finalmente consegue derrotar os animais e vai em direção a bruxa, que parece estar muito assustada. Chegando nela, a bruxa te pede piedade e te promete dar um saco com peças de ouro além de te ajudar com suas feridas. {atacar/desculpar}'],
         'vida': 0,
         'ouro': 0,
         'proximos_estados': {
