@@ -47,7 +47,7 @@ async def on_message(msg):
     inventario_do_jogador = partidas[autor]['inventario']
 
     for key, value in estado_do_jogador['proximos_estados'].items():
-        if fullmatch(key, msg.content):
+        if fullmatch(key, mensagem):
             if inventario_do_jogador.issuperset(estados[value]['inventario']):
                 # Atualiza o estado do jogador
                 partidas[autor]['estado'] = value

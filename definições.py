@@ -9,7 +9,7 @@ estados = {
         'vida': 100,
         'ouro': 10,
         'proximos_estados': {
-            '[iI]niciar?': 1
+            '[iI]niciar': 1
         },
         'inventario': {}
     },
@@ -29,7 +29,7 @@ estados = {
         'ouro': 15,
         'proximos_estados': {
             '[aA]vançar': 4,
-            '[rR]einiciar?': 0
+            '[rR]einiciar': 0
         },
         'inventario': {}
     },
@@ -38,7 +38,7 @@ estados = {
         'vida': 0,
         'ouro': 0,
         'proximos_estados': {
-            '[rR]einiciar?': 0
+            '[rR]einiciar': 0
         },
         'inventario': {'bomba_de_fumaça'}
     },
@@ -49,7 +49,7 @@ estados = {
         'proximos_estados': {
             '[sS](i)+m': 5,
             '[nN][aã]+o': 4.5,
-            '[rR]einiciar?': 0
+            '[rR]einiciar': 0
         },
         'inventario': {}
     },
