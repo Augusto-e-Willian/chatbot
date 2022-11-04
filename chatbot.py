@@ -10,7 +10,8 @@ load_dotenv()
 
 intents = discord.Intents.default()
 intents.message_content = True
-bot = commands.Bot(intents=intents, command_prefix='')
+prefix = '#'
+bot = commands.Bot(intents=intents, command_prefix=prefix)
 
 
 @bot.event
@@ -22,6 +23,10 @@ async def on_ready():
 async def on_message(msg):
     # Testar se o autor é um bot (incluindo o próprio)
     if msg.author.bot:
+        return
+    if msg.content.strip()[0] == prefix:
+        mensagem = msg.content.strip()[1:]
+    else:
         return
 
     autor = msg.author.id
