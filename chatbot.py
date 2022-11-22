@@ -43,13 +43,14 @@ async def on_message(msg):
     else:
         return
 
+    autor = msg.author.id
+
     if fullmatch('[rR]einiciar?', mensagem):
         #
         # Pesquisar e apagar o registro no banco - e informar o usuário
         partidas_db.find_one_and_delete({'jogador': autor})
         await msg.channel.send(frases['reiniciado'])
         return
-
     if fullmatch('[sS]ing it for me.?', mensagem):
         #
         # Fechar todos os canais de voz
@@ -86,7 +87,6 @@ async def on_message(msg):
             await msg.channel.send(frases['sem_canal_de_voz'])
             return
 
-    autor = msg.author.id
     if autor not in partidas:
         # Jogador começa com os itens abaixo
         partidas[autor] = {
