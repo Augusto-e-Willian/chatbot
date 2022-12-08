@@ -285,6 +285,13 @@ async def on_message(msg):
                     else:
                         await msg.channel.send('Não escapou')
                         partida['estado'] = 26
+                if msg.channel.type.name != 'private':
+                    arquivo_de_som = str(value) + '.mp3'
+                    if exists(arquivo_de_som):
+                    #
+                    # Conectar no canal de áudio e emitir o som
+                        som_opus = await discord.FFmpegOpusAudio.from_probe(arquivo_de_som)
+                        canais_de_voz[autor].play(som_opus)
                 await msg.channel.send(choice(estados[value]['frases']))
             else:
                 await msg.channel.send(frases['inventario_insuficiente'])
