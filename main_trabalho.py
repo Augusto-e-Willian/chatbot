@@ -1,7 +1,7 @@
-from pokemon import Pokemon, desenho_pokemons
+from pokemon import Pokemon, desenho_pokemons, Jogador
 from random import randint
 
-
+player=Jogador()
 escolha=int(input("Escolha o seu pokemon: \n1)Charmander\n2)Squirtle\n3)Bulbassauro\n: "))
 meu_pokemon=Pokemon(escolha)
 for k,v in desenho_pokemons.items():
@@ -10,13 +10,26 @@ for k,v in desenho_pokemons.items():
         meu_pokemon.escolha_nome()
 while True:
     caminho=input(f'Escolha entre ir ao mercado para comprar suprimentos ou batalhar(mercado/batalhar): ')
+    while (caminho!="mercado") and (caminho!="batalhar") and (caminho!="pokecenter"):
+        caminho=input(f'Escolha entre ir ao mercado para comprar suprimentos ou batalhar(mercado/batalhar): ')
+    if caminho=="mercado":
+        player.loja()
+        continue
     if caminho=="batalhar":
         pokemon_contra=randint(2,3) #################LEMBRAR MUDAR PARA (1,3)
         pokemon_contra=Pokemon(pokemon_contra)
+    if caminho=="pokecenter":
+        meu_pokemon.pokecenter()
     while (pokemon_contra.vida>0):
         print(f'\nhp: {pokemon_contra.vida}\n\n{pokemon_contra.ascii}\n\n')
-        print(f'--------------------------------------------\n Vida de {meu_pokemon.nome}: {meu_pokemon.vida}\n--------------------------------------------')
-        acao=input(f'-------   -------\n/ATACAR/   /FUGIR/\n-------   -------\n: ')
+        print(f'--------------------------------------------\n Vida de {meu_pokemon.nome}: {meu_pokemon.vida}\n--------------------------------------------\nMoedas:{player.moedas}')
+        acao=input(f'-------   -------   -------\n/ATACAR/  /FUGIR/   /ITENS/\n-------   -------   -------\n: ')
+        if acao=="itens":
+            if len(player.inventario) >0:
+                quantidade_de_cura=player.usar_itens()
+                meu_pokemon.curar(quantidade_de_cura)
+            else:
+                print(f'Você não tem itens no seu inventário!')
         if acao=="fugir":
             chance=randint(0,100)
             if chance<=90:
@@ -54,5 +67,6 @@ while True:
         if pokemon_contra.vida<=0:
             meu_pokemon.ganho_xp(pokemon_contra.nivel)
             meu_pokemon.subida_nivel(escolha)
+            player.moedas_vitoria(pokemon_contra.nivel)
             print(f'nivel = {meu_pokemon.nivel} // xp = {meu_pokemon.xp}')
             
